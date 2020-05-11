@@ -13,7 +13,7 @@ Options:
   -w, --work <duration>    Duration of a work session (Default 25m)
   -b, --break <duration>   Duration of a short break (Default 5m)
   -c, --cicles <number>    Number of Cicles (Default 4)
-  -n, --notifyer <script>  Script to use as notifyer (Default notify-send)
+  -n, --notifyer <script>  Script to use as notifyer (Default notify-send with speaker-test)
 
 Examples:
   $0 -w 2m -b 30s -c 6
