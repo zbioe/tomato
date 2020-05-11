@@ -17,7 +17,7 @@ curl -O https://raw.githubusercontent.com/zbioe/tomato/master/tomato.sh
 Move it to some folder in your `$PATH`
 
 ``` shell
-sudo mv tomato.sh /usr/local/bin
+sudo mv tomato.sh /usr/local/bin/tomato
 ```
 
 # Usage
