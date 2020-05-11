@@ -4,8 +4,15 @@ Just a simple pomodoro time manager
 
 # Install
 
+Get the script from this repository
 ``` shell
 curl -O https://raw.githubusercontent.com/zbioe/tomato/master/tomato.sh
+```
+
+Move then for a folder in your `$PATH`
+
+``` shell
+sudo mv tomato.sh /usr/local/bin
 ```
 
 # Usage
