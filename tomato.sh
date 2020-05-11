@@ -13,7 +13,7 @@ Options:
   -w, --work <duration>    Duration of a work session (Default 25m)
   -b, --break <duration>   Duration of a short break (Default 5m)
   -c, --cicles <number>    Number of Cicles (Default 4)
-  -n, --notifyer <script>  Script to use as notifyer (Default notify-send with speaker-test)
+  -n, --notifyer <script>  Script to use as notifyer (Default notify)
 
 Examples:
   $0 -w 2m -b 30s -c 6
@@ -31,14 +31,18 @@ err() {
 }
 
 noise() {
+  case $1 in
+    "relax mode") song=pink;;
+    "focus mode") song=sine;;
+  esac
   (
-    speaker-test -l 1 -p 1 -t sine &
+    speaker-test -l 1 -p 1 -t $song &
   ) 1>/dev/null 2>&1
 }
 
 notify() {
   notify-send "$@"
-  which speaker-test 1>/dev/null 2>&1 && noise
+  which speaker-test 1>/dev/null 2>&1 && noise "$@"
 }
 
 while [ $# -gt 0 ] ; do
@@ -49,7 +53,7 @@ while [ $# -gt 0 ] ; do
       exit 0
       ;;
     "--work"|"-w")
-      ws=$2
+      w=$2
       ;;
     "--break"|"-b")
       b=$2
@@ -76,6 +80,12 @@ W=${w-$default_w}
 B=${b-$default_b}
 C=${c-$default_c}
 N=${n-$default_n}
+
+echo "Setted"
+echo "Work: $W"
+echo "Relax: $B"
+echo "Cicles: $C"
+echo "Notifyer: $N"
 
 while [ $C -ge 0 ]
 do
