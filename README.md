@@ -1,6 +1,11 @@
 # Tomato
 
-Just a simple pomodoro time manager
+Just a simple implementation of pomodoro timer
+
+# Features
+- notify in your screen with `notify-send`
+- do a noise when time to change mode (focus mode, relax mode)
+- notifyer extensible, just create a scrit who receive a message as arg and pass by `-n` flag
 
 # Install
 
@@ -9,7 +14,7 @@ Get the script from this repository
 curl -O https://raw.githubusercontent.com/zbioe/tomato/master/tomato.sh
 ```
 
-Move then for a folder in your `$PATH`
+Move it to some folder in your `$PATH`
 
 ``` shell
 sudo mv tomato.sh /usr/local/bin
