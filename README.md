@@ -17,9 +17,11 @@ sudo mv tomato.sh /usr/local/bin
 
 # Usage
 
+For see the usage you can just use `tomato -h`
+
 ``` text
-Usage of ./tomato.sh:
-  ./tomato.sh [OPTION]...o
+Usage:
+  ./tomato.sh [OPTION]...
 
 Options:
   -h, --help               Show this message
