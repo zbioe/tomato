@@ -6,7 +6,7 @@ set -o nounset
 usage() {
   cat <<EOF
 Usage of $0:
-  $0 [option]
+  $0 [OPTION]...
 
 Options:
   -h, --help               Show this message

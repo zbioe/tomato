@@ -12,7 +12,7 @@ curl -O https://raw.githubusercontent.com/zbioe/tomato/master/tomato.sh
 
 ``` text
 Usage of ./tomato.sh:
-  ./tomato.sh [option]
+  ./tomato.sh [OPTION]...o
 
 Options:
   -h, --help               Show this message
