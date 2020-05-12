@@ -5,7 +5,7 @@ Just a simple implementation of pomodoro timer
 # Features
 - notify in your screen with `notify-send`
 - make a noise using `alsa` when is time to change mode (focus mode, relax mode)
-- notifyer extensible, just create a scrit who receive a message as arg and pass by `-n` flag
+- extensible notifiyer, just create a scrit who receive a message as arg and pass it by `-n` flag
 
 # Install
 
