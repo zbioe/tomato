@@ -14,14 +14,21 @@ Options:
   -b, --break <duration>   Duration of a short break (Default 5m)
   -c, --cicles <number>    Number of Cicles (Default 4)
   -f, --file <filename>    File used for logging the mode changes (Default tempfile)
-  -n, --notifyer <script>  Script to use as notifyer (Default notify)
+  -n, --notifier <script>  Script to use as notifier (Default notify)
 
 Examples:
   $0 -w 2m -b 30s -c 6
-  $0 -n "/bin/custom_notifyer.sh"
+  $0 -n "/bin/custom_notifier.sh"
+  $0 -w 5s -b 3s -c 3 -f custom.log
 
-Notifyer:
-  notify [message]
+Notifier:
+  notify <mode>   Called with a mode as arg
+
+Modes:
+  focus   Time to focus in your task
+  relax   Time to take a break and relax
+  end	  You reached the end of the session
+
 EOF
 }
 
@@ -78,7 +85,7 @@ while [ $# -gt 0 ] ; do
     "--file"|"-f")
       f=$2
       ;;
-    "--notifyer"|"-n")
+    "--notifier"|"-n")
       n=$2
       ;;
     *)
@@ -105,7 +112,7 @@ echo "Setted"
 echo "Work: $W"
 echo "Relax: $B"
 echo "Cicles: $C"
-echo "Notifyer: $N"
+echo "Notifier: $N"
 echo "Log file: $logFile"
 
 while [ $C -ge 0 ]
