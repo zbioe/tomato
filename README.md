@@ -43,10 +43,10 @@ Examples:
   ./tomato.sh -w 5s -b 3s -c 3 -f custom.log
 
 Notifier:
-  notify <mode>   Called with a mode as arg
+  notify <mode>  Called with a mode as arg
 
 Modes:
-  focus   Time to focus in your task
-  relax   Time to take a break and relax
-  end     You reached the end of the session
+  focus  Time to focus in your task
+  relax  Time to take a break and relax
+  end    You reached the end of the session
 ```
