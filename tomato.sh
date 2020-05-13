@@ -57,15 +57,6 @@ log() {
   echo $(date +%d-%m-%Y_%H-%M-%S)" $@"
 }
 
-mkTempFile() {
-  tmpFile=$(mktemp --suffix=-tomato)
-  cleanup(){
-    [ -f $tmpFile ] && rm -f $tmpFile
-  }
-  trap cleanup 0 1 2 3 6
-  echo $tmpFile
-}
-
 while [ $# -gt 0 ] ; do
   nSkip=2
   case $1 in
@@ -104,7 +95,14 @@ W=${w-$default_w}
 B=${b-$default_b}
 C=${c-$default_c}
 N=${n-$default_n}
-logFile=${f-$(mkTempFile)}
+
+case ${f-""} in
+  "")
+    logFile=$(mktemp --suffix=-tomato)
+    trap "rm -f $logFile" EXIT
+    ;;
+  *) logFile=$f ;;
+esac
 
 
 
