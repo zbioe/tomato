@@ -97,14 +97,10 @@ C=${c-$default_c}
 N=${n-$default_n}
 
 case ${f-""} in
-  "")
-    logFile=$(mktemp --suffix=-tomato)
-    trap "rm -f $logFile" EXIT
-    ;;
+  "") logFile=$(mktemp --suffix=-tomato)
+      trap "rm -f $logFile" EXIT ;;
   *) logFile=$f ;;
 esac
-
-
 
 echo "Setted"
 echo "Work: $W"
