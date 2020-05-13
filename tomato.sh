@@ -32,8 +32,8 @@ err() {
 
 noise() {
   case $1 in
-    "relax mode") song=pink;;
-    "focus mode") song=sine;;
+    relax) song=pink;;
+    focus|end) song=sine;;
   esac
   (
     speaker-test -l 1 -p 1 -t $song &
@@ -43,6 +43,10 @@ noise() {
 notify() {
   notify-send "$@"
   which speaker-test 1>/dev/null 2>&1 && noise "$@"
+}
+
+log() {
+  echo $(date +%d-%m-%Y_%H-%M-%S)" $@"
 }
 
 while [ $# -gt 0 ] ; do
@@ -81,18 +85,35 @@ B=${b-$default_b}
 C=${c-$default_c}
 N=${n-$default_n}
 
+statusFile=$(mktemp --suffix=-tomato)
+cleanup(){
+  [ -f $statusFile ] && rm -f $statusFile
+}
+trap cleanup 0 1 2 3 6
+
 echo "Setted"
 echo "Work: $W"
 echo "Relax: $B"
 echo "Cicles: $C"
 echo "Notifyer: $N"
+echo "Status file: $statusFile"
 
 while [ $C -ge 0 ]
 do
-  $N "focus mode"
+  $N focus
+  log focus >> $statusFile
   sleep $W
-  $N "relax mode"
-  sleep $B
+  case $C in
+    1)
+      log end >> $statusFile
+      $N end
+      break
+      ;;
+    *)
+      $N relax
+      log relax >> $statusFile
+      sleep $B
+  esac
   C=$(expr $C - 1)
 done
 
