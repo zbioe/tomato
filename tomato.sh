@@ -12,7 +12,7 @@ Options:
   -h, --help               Show this message
   -w, --work <duration>    Duration of a work session (Default 25m)
   -b, --break <duration>   Duration of a short break (Default 5m)
-  -c, --cycles <number>    Number of cycles (Default 4)
+  -c, --cicles <number>    Number of Cicles (Default 4)
   -f, --file <filename>    File used for logging the mode changes (Default tempfile)
   -n, --notifier <script>  Script to use as notifier (Default notify)
 
@@ -70,7 +70,7 @@ while [ $# -gt 0 ] ; do
     "--break"|"-b")
       b=$2
       ;;
-    "--cycles"|"-c")
+    "--cicles"|"-c")
       c=$2
       ;;
     "--file"|"-f")
@@ -105,18 +105,17 @@ esac
 echo "Setted"
 echo "Work: $W"
 echo "Relax: $B"
-echo "Cycles: $C"
+echo "Cicles: $C"
 echo "Notifier: $N"
 echo "Log file: $logFile"
 
-while [ $C -gt 0 ]
+while [ $C -ge 0 ]
 do
   $N focus
   log focus >> $logFile
   sleep $W
-  C=$(expr $C - 1)
   case $C in
-    0)
+    1)
       log end >> $logFile
       $N end
       break
@@ -126,6 +125,7 @@ do
       log relax >> $logFile
       sleep $B
   esac
+  C=$(expr $C - 1)
 done
 
 exit 0
