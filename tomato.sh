@@ -14,7 +14,7 @@ Options:
   -b, --break <duration>   Duration of a short break (Default 5m)
   -c, --cycles <number>    Number of cycles (Default 4)
   -f, --file <filename>    File used for logging the mode changes (Default tempfile)
-  -n, --notifier <script>  Script to use as notifier (Default notify)
+  -n, --notifier <script>  Script to use as notifier (Default default_notify)
 
 Examples:
   $0 -w 2m -b 30s -c 6
@@ -25,8 +25,8 @@ Notifier:
   notify <mode>  Called with a mode as arg
 
 Modes:
-  focus  Time to focus in your task
-  relax  Time to take a break and relax
+  work   Time to work in your task
+  break  Time to take a break and relax
   end	 You reached the end of the session
 
 EOF
@@ -40,15 +40,15 @@ err() {
 
 noise() {
   case $1 in
-    relax) song=pink;;
-    focus|end) song=sine;;
+    break) song=pink;;
+    work|end) song=sine;;
   esac
   (
     speaker-test -l 1 -p 1 -t $song &
   ) 1>/dev/null 2>&1
 }
 
-notify() {
+default_notify() {
   notify-send "$@"
   which speaker-test 1>/dev/null 2>&1 && noise "$@"
 }
@@ -89,7 +89,7 @@ done
 default_w="25m"
 default_b="5m"
 default_c="4"
-default_n=notify
+default_n=default_notify
 
 W=${w-$default_w}
 B=${b-$default_b}
@@ -102,17 +102,16 @@ case ${f-""} in
   *) logFile=$f ;;
 esac
 
-echo "Setted"
 echo "Work: $W"
-echo "Relax: $B"
+echo "Break: $B"
 echo "Cycles: $C"
 echo "Notifier: $N"
 echo "Log file: $logFile"
 
 while [ $C -gt 0 ]
 do
-  $N focus
-  log focus >> $logFile
+  $N work
+  log work >> $logFile
   sleep $W
   C=$(expr $C - 1)
   case $C in
@@ -122,8 +121,8 @@ do
       break
       ;;
     *)
-      $N relax
-      log relax >> $logFile
+      $N break
+      log break >> $logFile
       sleep $B
   esac
 done
