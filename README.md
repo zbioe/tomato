@@ -30,16 +30,16 @@ Usage:
   ./tomato.sh [OPTION]...
 
 Options:
-  -h, --help               Show this message
-  -w, --work <duration>    Duration of a work session (Default 25m)
-  -b, --break <duration>   Duration of a short break (Default 5m)
-  -c, --cycles <number>    Number of cycles (Default 4)
-  -f, --file <filename>    File used for logging the mode changes (Default tempfile)
-  -n, --notifier <script>  Script to use as notifier (Default default_notify)
+  -h, --help                Show this message
+  -w, --work <duration>     Duration of a work session (Default 25m)
+  -b, --break <duration>    Duration of a short break (Default 5m)
+  -c, --cycles <number>     Number of cycles (Default 4)
+  -f, --file <filename>     File used for logging the mode changes (Default tempfile)
+  -n, --notifier <command>  Script to use as notifier (Default default_notifier)
 
 Examples:
   ./tomato.sh -w 2m -b 30s -c 6
-  ./tomato.sh -n "/bin/custom_notifier.sh"
+  ./tomato.sh -n "./example_notifier.sh"
   ./tomato.sh -w 5s -b 3s -c 3 -f custom.log
 
 Notifier:

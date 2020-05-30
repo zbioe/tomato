@@ -9,12 +9,12 @@ Usage:
   $0 [OPTION]...
 
 Options:
-  -h, --help               Show this message
-  -w, --work <duration>    Duration of a work session (Default 25m)
-  -b, --break <duration>   Duration of a short break (Default 5m)
-  -c, --cycles <number>    Number of cycles (Default 4)
-  -f, --file <filename>    File used for logging the mode changes (Default tempfile)
-  -n, --notifier <script>  Script to use as notifier (Default default_notify)
+  -h, --help                Show this message
+  -w, --work <duration>     Duration of a work session (Default 25m)
+  -b, --break <duration>    Duration of a short break (Default 5m)
+  -c, --cycles <number>     Number of cycles (Default 4)
+  -f, --file <filename>     File used for logging the mode changes (Default tempfile)
+  -n, --notifier <command>  Script to use as notifier (Default default_notifier)
 
 Examples:
   $0 -w 2m -b 30s -c 6
