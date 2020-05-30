@@ -18,7 +18,7 @@ Options:
 
 Examples:
   $0 -w 2m -b 30s -c 6
-  $0 -n "/bin/custom_notifier.sh"
+  $0 -n "./example_notifier.sh"
   $0 -w 5s -b 3s -c 3 -f custom.log
 
 Notifier:
@@ -48,7 +48,7 @@ noise() {
   ) 1>/dev/null 2>&1
 }
 
-default_notify() {
+default_notifier() {
   notify-send "$@"
   which speaker-test 1>/dev/null 2>&1 && noise "$@"
 }
@@ -89,7 +89,7 @@ done
 default_w="25m"
 default_b="5m"
 default_c="4"
-default_n=default_notify
+default_n=default_notifier
 
 W=${w-$default_w}
 B=${b-$default_b}
