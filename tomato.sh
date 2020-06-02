@@ -113,7 +113,7 @@ do
   $N work
   log work >> $logFile
   sleep $W
-  C=$(expr $C - 1)
+  C=$(($C - 1))
   case $C in
     0)
       log end >> $logFile
