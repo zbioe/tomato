@@ -18,8 +18,9 @@ Options:
 
 Examples:
   $0 -w 2m -b 30s -c 6
-  $0 -n "./example_notifier.sh"
-  $0 -w 5s -b 3s -c 3 -f custom.log
+  $0 -n ./example_notifier.sh
+  $0 -f custom.log
+  $0 -w 5s -b 3s -c 3 -f custom.log -n ./example_notifier.sh
 
 Notifier:
   notify <mode>  Called with a mode as arg
