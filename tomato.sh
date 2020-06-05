@@ -55,7 +55,7 @@ default_notifier() {
 }
 
 log() {
-  echo $(date +%d-%m-%Y_%H-%M-%S)" $@"
+  echo $(date +%d-%m-%Y_%H:%M:%S)" $@"
 }
 
 while [ $# -gt 0 ] ; do
