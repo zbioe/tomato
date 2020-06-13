@@ -4,7 +4,7 @@ Just a simple implementation of pomodoro timer
 
 # Features
 - notify in your screen with `notify-send`
-- make a noise using `alsa` when is time to change mode (work, break, end)
+- make a noise using command `speaker-test` from `alsa` when is time to change mode (work, break, end)
 - You can create a custom notifyer scrit, you just need to receive the mode passed as argument
 - log the mode change in a  file
 - extensible notifier, just create a script who receive the mode as arg and pass it by `-n` flag
