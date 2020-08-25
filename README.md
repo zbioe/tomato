@@ -1,6 +1,6 @@
 # Tomato
 
-Just a simple implementation of pomodoro timer
+A simple implementation of pomodoro timer
 
 # Features
 - notify in your screen with `notify-send`
