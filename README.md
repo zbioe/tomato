@@ -11,7 +11,7 @@ A simple implementation of pomodoro timer
 
 # Install
 
-Get the script from this repository
+Get the script
 ``` shell
 curl -O https://raw.githubusercontent.com/zbioe/tomato/master/tomato.sh
 ```
